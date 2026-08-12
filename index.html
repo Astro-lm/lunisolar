@@ -1,0 +1,1481 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <meta name="description" content="Lunisolar Mansion — Astrological Counselling, Analysis and Horoscope Casting.">
+    <title>Lunisolar Mansion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kavivanar&family=Carter+One&family=Handlee&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --gold: #f2c64f;
+            --navy: #2a4a7a;
+            --bronze: #B2560D;
+            --page-bg: #fbfaf6;
+            --bg-dark: #000000;
+            --text-dark: #f7f1e5;
+            --muted-dark: #b9b1a2;
+            --card-dark: #000000;
+            --border-dark: #f2c64f35;
+            --bg-light: #fbfaf6;
+            --text-light: #241f18;
+            --muted-light: #6e665b;
+            --card-light: #ffffff;
+            --border-light: #2a4a7a28;
+        }
+        body {
+            margin: 0;
+            background: var(--page-bg);
+            color: var(--text-light);
+            font: 16px/1.7 'Kavivanar', cursive;
+        }
+        .stars {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            opacity: .10;
+            background-image: radial-gradient(var(--gold) 1px, transparent 1px);
+            background-size: 95px 95px;
+            pointer-events: none;
+        }
+        .wrap {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        /* ── header ── */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9;
+            background: #000000;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-dark);
+        }
+        nav {
+            height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #000000;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+        .brand img {
+            width: 54px;
+            display: block;
+        }
+        .brand b {
+            font: 600 23px 'Carter One', cursive;
+            display: block;
+            line-height: 1;
+        }
+        .brand small {
+            font-size: 10px;
+            color: var(--muted-dark);
+            font-weight: 500;
+            font-family: 'Kavivanar', cursive;
+        }
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .nav a,
+        footer a {
+            color: var(--muted-dark);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: color .3s;
+            font-family: 'Kavivanar', cursive;
+        }
+        .nav a:hover,
+        footer a:hover {
+            color: var(--gold);
+        }
+        .pill {
+            border: 3px solid var(--gold);
+            padding: 8px 17px;
+            border-radius: 99px;
+            color: var(--gold) !important;
+            transition: background .3s, color .3s, border-color .3s;
+        }
+        .pill:hover {
+            background: var(--gold);
+            color: #181208 !important;
+            border-color: var(--gold);
+        }
+        .pill1 {
+            border: 3px solid var(--white);
+            padding: 8px 17px;
+            border-radius: 99px;
+            color: var(--white) !important;
+            transition: background .3s, color .3s, border-color .3s;
+        }
+        .pill1:hover {
+            background: var(--navy);
+            color: white !important;
+            border-color: var(--navy);
+        }
+.pill2 {
+    background: var(--gold);
+    color: #181208 !important;      /* dark text to contrast with gold background */
+    border: 3px solid var(--gold);
+    padding: 8px 17px;
+    border-radius: 99px;
+    transition: background .3s, color .3s, border-color .3s;
+}
+.pill2:hover {
+    background: transparent;
+    color: var(--gold) !important;
+    border-color: var(--gold);
+}
+        #menu {
+            display: none;
+            background: none;
+            border: 0;
+            color: var(--text-dark);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* ── hero ── */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            align-items: center;
+            padding: 120px 0 60px;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .eyebrow {
+            font-size: 11px;
+            letter-spacing: .24em;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-family: 'Kavivanar', cursive;
+        }
+        h1, h2, h3, blockquote {
+            font-family: 'Carter One', cursive;
+        }
+        h1 {
+            font-size: clamp(54px, 7vw, 96px);
+            line-height: .94;
+            letter-spacing: -.04em;
+            margin: 18px 0 28px;
+            font-weight: 400;
+        }
+        h1 .gold {
+            color: var(--gold);
+            font-weight: 400;
+        }
+        h1 .white {
+            color: #fff;
+        }
+        .lead {
+            color: var(--muted-dark);
+        }
+        .actions {
+            display: flex;
+            gap: 14px;
+            margin: 32px 0;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            padding: 14px 22px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            border-radius: 4px;
+            transition: transform .2s, filter .2s, background .3s, color .3s, border-color .3s;
+            cursor: pointer;
+            border: 1px solid transparent;
+            font-family: 'Kavivanar', cursive;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .trust {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: var(--muted-dark);
+            font-size: 12px;
+            font-family: 'Kavivanar', cursive;
+        }
+
+        /* ── visual: orbit above logo ── */
+        .visual {
+            position: relative;
+            display: grid;
+            place-items: center;
+            aspect-ratio: 1;
+        }
+        .visual .logo-layer {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            z-index: 1;
+        }
+        .visual .logo-layer img {
+            width: 88%;
+            display: block;
+        }
+        .visual .orbit-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .visual .orbit-layer .ring {
+            position: absolute;
+            inset: 3%;
+            border: 1px solid var(--border-dark);
+            border-radius: 50%;
+            animation: spin 28s linear infinite;
+        }
+        .visual .orbit-layer .ring::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--gold);
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 40px 0;
+            background: transparent;
+        }
+
+        /* ── SECTION CARD ── */
+        .section-card {
+            padding: 55px 60px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            transition: background .3s, border-color .3s, box-shadow .3s;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        .section-card:hover {
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        /* ── CARD THEMES ── */
+        .section-dark {
+            --text: var(--text-dark);
+            --muted: var(--muted-dark);
+            --accent: var(--gold);
+            --border: var(--border-dark);
+            --card-bg: var(--card-dark);
+            color: var(--text);
+        }
+        .section-dark .eyebrow { color: var(--accent); }
+        .section-dark .lead,
+        .section-dark .copy p,
+        .section-dark .center>p:last-child,
+        .section-dark .portal p,
+        .section-dark .notice p,
+        .section-dark .card p,
+        .section-dark .card span,
+        .section-dark .steps p,
+        .section-dark .quote p { color: var(--muted); }
+        .section-dark .card a { color: var(--text); }
+        .section-dark .card a:hover { color: var(--accent); }
+        .section-dark .notice .wrap { border-left-color: var(--accent); }
+        .section-dark .ghost {
+            border-color: var(--gold);
+            color: var(--text);
+            background: transparent;
+        }
+        .section-dark .ghost:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .section-dark h1, .section-dark h2, .section-dark h3, .section-dark blockquote {
+            color: var(--text);
+        }
+        .section-dark .card small { color: var(--accent); }
+        .section-dark .card strong { color: var(--accent); }
+        .section-dark .card i { color: var(--accent); }
+        .section-dark .mark { color: var(--accent); }
+        .section-dark .btn.primary {
+            background: var(--accent);
+            color: #181208;
+            border-color: var(--accent);
+        }
+        .section-dark .btn.primary:hover {
+            filter: brightness(1.08);
+        }
+        .section-dark .logo-light { display: none !important; }
+        .section-dark .logo-dark { display: block !important; }
+
+        .section-light {
+            --text: var(--text-light);
+            --muted: var(--muted-light);
+            --accent: var(--navy);
+            --border: var(--border-light);
+            --card-bg: var(--card-light);
+            color: var(--text);
+        }
+        .section-light .eyebrow { color: var(--accent); }
+        .section-light .lead,
+        .section-light .copy p,
+        .section-light .center>p:last-child,
+        .section-light .portal p,
+        .section-light .notice p,
+        .section-light .card p,
+        .section-light .card span,
+        .section-light .steps p,
+        .section-light .quote p { color: var(--muted); }
+        .section-light .card a { color: var(--text); }
+        .section-light .card a:hover { color: var(--accent); }
+        .section-light .notice .wrap { border-left-color: var(--accent); }
+        .section-light .ghost {
+            border-color: var(--border);
+            color: var(--text);
+            background: transparent;
+        }
+        .section-light .ghost:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .section-light h1, .section-light h2, .section-light h3, .section-light blockquote {
+            color: var(--text);
+        }
+        .section-light .card small { color: var(--accent); }
+        .section-light .card strong { color: var(--accent); }
+        .section-light .card i { color: var(--accent); }
+        .section-light .mark { color: var(--accent); }
+        .section-light .btn.primary {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+        }
+        .section-light .btn.primary:hover {
+            filter: brightness(1.15);
+        }
+        .section-light .logo-dark { display: block !important; }
+        .section-light .logo-light { display: none !important; }
+
+        /* ── FLIP CARDS (SERVICES) ── */
+        #services .card {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            perspective: 1000px;
+            height: 100%;
+            min-height: 350px;
+        }
+        #services .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s ease;
+            transform-style: preserve-3d;
+            border-radius: 16px;
+            min-height: 350px;
+        }
+        #services .card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        #services .card-front,
+        #services .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 16px;
+            padding: 34px;
+            background: var(--navy);
+            border: 1px solid var(--navy);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        #services .card-back {
+            transform: rotateY(180deg);
+            background: var(--navy);
+            border-color: var(--navy);
+            color: #fff;
+        }
+        #services .card-back a {
+            color: #ffffff;
+            font-weight: 700;
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 4px;
+            transition: color .3s, border-color .3s;
+        }
+        #services .card-back a:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+        #services .card-front i {
+            font-size: 32px;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        #services .card-front small {
+            color: var(--gold);
+            letter-spacing: .15em;
+            font-size: 10px;
+            font-weight: 700;
+            font-family: 'Kavivanar', cursive;
+            margin-bottom: 8px;
+        }
+        #services .card-front h3 {
+            font-size: 31px;
+            margin: 12px 0;
+            font-family: 'Carter One', cursive;
+            font-weight: 400;
+            color: #fff;
+        }
+        #services .card-front p {
+            font-family: 'Kavivanar', cursive;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0 0 12px 0;
+            line-height: 1.5;
+        }
+        /* ── TAP HINT ── */
+        .tap-hint {
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border: 1px solid var(--gold);
+            padding: 4px 14px;
+            border-radius: 30px;
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.15);
+            margin-top: auto;
+            align-self: flex-start;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+        #services .card:hover .tap-hint {
+            opacity: 0; /* hide hint on hover/tap flip */
+        }
+
+        #services .card-back strong {
+            font-size: 30px;
+            color: var(--gold);
+            font-family: 'Kavivanar', cursive;
+            display: block;
+        }
+        #services .card-back span {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Kavivanar', cursive;
+            margin-top: 4px;
+        }
+
+        /* ── shared content styles ── */
+        .split {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 90px;
+        }
+        h2 {
+            font-size: clamp(42px, 5vw, 68px);
+            line-height: 1.05;
+            margin: 10px 0 20px;
+            font-weight: 400;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+        .tags span {
+            border-radius: 99px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            background: var(--navy);
+            color: #ffffff;
+            border: 1px solid var(--navy);
+            font-family: 'Kavivanar', cursive;
+        }
+        .section-dark .tags span {
+            background: var(--navy);
+            color: #fff;
+            border-color: var(--navy);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+        .steps b {
+            display: grid;
+            place-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 18px;
+            font-weight: 700;
+            background: var(--navy);
+            color: #ffffff;
+            border: 1px solid var(--navy);
+            font-family: 'Kavivanar', cursive;
+        }
+        .section-dark .steps b {
+            background: var(--navy);
+            color: #fff;
+            border-color: var(--navy);
+        }
+        .steps h3 {
+            font-size: 24px;
+            margin: 15px 0 2px;
+            font-family: 'Carter One', cursive;
+            font-weight: 400;
+        }
+        .steps p {
+            font-size: 13px;
+            font-weight: 400;
+            font-family: 'Kavivanar', cursive;
+        }
+
+        .center {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 50px;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        /* ── PHILOSOPHY ── */
+        .quote {
+            text-align: center;
+        }
+        .mark {
+            font: 80px/.6 Georgia, serif;
+        }
+        blockquote {
+            font-size: clamp(20px, 2.6vw, 32px);
+            line-height: 1.4;
+            margin: 16px 0 12px;
+            font-family: 'Handlee', cursive;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            color: #f7f1e5;
+        }
+        .section-light blockquote {
+            color: #241f18;
+        }
+        .quote p {
+            font-size: 14px;
+            font-family: 'Kavivanar', cursive;
+        }
+        .quote .gold-text {
+            color: var(--gold);
+        }
+
+        /* ── PORTAL ── */
+        .portal {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+        .portal h2 {
+            font-size: 46px;
+            font-weight: 400;
+        }
+        .portal h2 .navy-highlight {
+            color: var(--navy);
+        }
+        .portal .btn.primary {
+            background: var(--bronze);
+            border-color: var(--bronze);
+            color: #ffffff;
+        }
+        .portal .btn.primary:hover {
+            filter: brightness(1.15);
+        }
+
+        /* ── NOTICE ── */
+        .notice {
+            padding-top: 0;
+        }
+        .notice h3 {
+            font-size: 26px;
+            margin: 0;
+            font-family: 'Carter One', cursive;
+            font-weight: 400;
+        }
+        .notice h3 .gold-highlight {
+            color: var(--gold);
+        }
+        .notice p {
+            font-size: 13px;
+            margin: 4px 0;
+            font-family: 'Kavivanar', cursive;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 65px 0 25px;
+            border-top: 1px solid var(--border-dark);
+            background: var(--bg-dark);
+            color: var(--text-dark);
+            margin-top: 40px;
+        }
+        footer a {
+            color: var(--muted-dark);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: color .3s;
+            font-family: 'Kavivanar', cursive;
+        }
+        footer a:hover {
+            color: var(--gold);
+        }
+        .foot {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+        }
+        .foot img {
+            width: 110px;
+            display: block;
+        }
+        .foot p {
+            color: var(--muted-dark);
+            font-family: 'Kavivanar', cursive;
+        }
+        footer h4 {
+            color: var(--gold);
+            font-size: 12px;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-family: 'Kavivanar', cursive;
+        }
+        .foot a {
+            display: block;
+            margin: 7px 0;
+        }
+        .bottom {
+            border-top: 1px solid var(--border-dark);
+            margin-top: 40px;
+            padding-top: 20px;
+            color: var(--muted-dark);
+            font-size: 11px;
+            font-family: 'Kavivanar', cursive;
+        }
+        footer .logo-dark { display: block !important; }
+        footer .logo-light { display: none !important; }
+
+        /* ── reveal animations ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── MODAL ── */
+        #modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        #modal-overlay.open {
+            display: flex;
+        }
+        #modal-card {
+            background: var(--navy);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 1000px;
+            height: 90vh;
+            max-height: 800px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        #modal-header {
+            padding: 16px 24px;
+            background: #1a3a5a;
+            border-bottom: 1px solid var(--gold);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-shrink: 0;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        #modal-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            line-height: 1;
+            cursor: pointer;
+            color: #ffffff;
+            padding: 0 8px;
+            transition: color .2s, transform .2s;
+            font-family: 'Kavivanar', cursive;
+        }
+        #modal-close:hover {
+            transform: scale(1.2);
+            color: var(--gold);
+        }
+        #modal-iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+            background: #fbfaf6;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        @media (max-width: 600px) {
+            #modal-card {
+                height: 95vh;
+                max-height: 95vh;
+                border-radius: 12px;
+            }
+            #modal-header {
+                padding: 10px 16px;
+                border-top-left-radius: 12px;
+                border-top-right-radius: 12px;
+            }
+            #modal-close {
+                font-size: 24px;
+            }
+            #modal-iframe {
+                border-bottom-left-radius: 12px;
+                border-bottom-right-radius: 12px;
+            }
+        }
+
+        /* ── LANDSCAPE POPUP ── */
+        #landscape-popup {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            background: var(--bronze);
+            color: #ffffff;
+            padding: 14px 24px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+            font-family: 'Kavivanar', cursive;
+            font-size: 14px;
+            max-width: 90%;
+            text-align: center;
+            border: 1px solid var(--gold);
+            animation: slideUp 0.4s ease forwards;
+        }
+        #landscape-popup .popup-close {
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 12px;
+            padding: 0 4px;
+            font-weight: 700;
+            vertical-align: middle;
+        }
+        #landscape-popup .popup-close:hover {
+            transform: scale(1.2);
+        }
+        @keyframes slideUp {
+            from { transform: translateX(-50%) translateY(30px); opacity: 0; }
+            to { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
+
+        /* ── WHATSAPP BUTTON ── */
+        .whatsapp-wrapper {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #25D366;
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            font-family: 'Kavivanar', cursive;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            border: 1px solid #1ebe5c;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+        .whatsapp-button:hover {
+            background: #1ebe5c;
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+        }
+        .whatsapp-button svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            #menu {
+                display: block;
+            }
+            .nav {
+                display: none;
+                position: fixed;
+                top: 82px;
+                left: 20px;
+                right: 20px;
+                background: var(--card-dark);
+                border: 1px solid var(--border-dark);
+                padding: 24px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 16px;
+                border-radius: 12px;
+                box-shadow: 0 20px 60px #00000044;
+            }
+            .nav.open {
+                display: flex;
+            }
+            .hero-grid,
+            .split {
+                grid-template-columns: 1fr;
+            }
+            .hero-grid>div:first-child {
+                text-align: center;
+            }
+            .actions,
+            .trust {
+                justify-content: center;
+            }
+            .visual {
+                order: -1;
+                width: 100%;
+                max-width: 340px;
+                margin: auto;
+                aspect-ratio: 1 / 1;
+            }
+            .visual .logo-layer img {
+                width: 88%;
+                height: auto;
+            }
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            #services .card {
+                min-height: 300px;
+            }
+            #services .flip-card-inner {
+                min-height: 300px;
+            }
+            .steps {
+                grid-template-columns: 1fr 1fr;
+            }
+            .portal {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .foot {
+                grid-template-columns: 1fr 1fr;
+            }
+            .foot>div:first-child {
+                grid-column: 1/-1;
+            }
+            .section-card {
+                padding: 35px 30px;
+            }
+            section {
+                padding: 30px 0;
+            }
+            blockquote {
+                font-size: clamp(18px, 2.4vw, 28px);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .brand small {
+                display: none;
+            }
+            .brand img {
+                width: 44px;
+            }
+            .hero {
+                padding-top: 110px;
+            }
+            h1 {
+                font-size: 52px;
+            }
+            .actions {
+                flex-direction: column;
+            }
+            .btn {
+                justify-content: center;
+            }
+            section {
+                padding: 20px 0;
+            }
+            .steps {
+                grid-template-columns: 1fr;
+            }
+            .portal {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .portal h2 {
+                font-size: 32px;
+            }
+            .foot {
+                grid-template-columns: 1fr;
+            }
+            .foot>div:first-child {
+                grid-column: auto;
+            }
+            .card p {
+                min-height: auto;
+            }
+            .card small {
+                position: static;
+                display: inline-block;
+                margin-bottom: 6px;
+            }
+            .card {
+                padding: 24px;
+            }
+            .section-card {
+                padding: 28px 20px;
+            }
+
+            #services .card {
+                min-height: 260px;
+            }
+            #services .flip-card-inner {
+                min-height: 260px;
+                height: 100%;
+                transition: transform 0.6s ease;
+            }
+            #services .card:hover .flip-card-inner {
+                transform: rotateY(180deg);
+            }
+            #services .card-front,
+            #services .card-back {
+                position: absolute;
+                padding: 20px 16px;
+                height: 100%;
+                overflow: hidden;
+            }
+            #services .card-back {
+                transform: rotateY(180deg);
+                display: flex;
+            }
+            #services .card-front h3 {
+                font-size: 22px;
+                margin: 6px 0;
+            }
+            #services .card-front p {
+                font-size: 13px;
+                line-height: 1.3;
+                margin-bottom: 8px;
+            }
+            #services .card-front i {
+                font-size: 24px;
+                margin-bottom: 4px;
+            }
+            #services .card-front small {
+                font-size: 9px;
+                margin-bottom: 4px;
+            }
+            #services .card-back strong {
+                font-size: 24px;
+            }
+            #services .card-back span {
+                font-size: 12px;
+            }
+            #services .card-back a {
+                font-size: 13px;
+                margin-top: 12px;
+            }
+            .tap-hint {
+                font-size: 11px;
+                padding: 2px 12px;
+            }
+
+            blockquote {
+                font-size: clamp(16px, 2.2vw, 22px);
+            }
+            .mark {
+                font-size: 60px;
+            }
+
+            .whatsapp-button {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+            .whatsapp-button svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            /* ── Fix word splitting only on mobile ── */
+            .section-card {
+                overflow-wrap: break-word;
+                word-break: break-word;
+            }
+            .section-light .copy p {
+                overflow-wrap: break-word;
+                word-break: break-word;
+            }
+            h2 {
+                font-size: clamp(30px, 6vw, 42px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+
+    <!-- LANDSCAPE POPUP (bronze background) -->
+    <div id="landscape-popup" role="alert">
+        <span>📱 For a better experience, please rotate your device to <strong>landscape mode</strong>.</span>
+        <button class="popup-close" id="popup-close" aria-label="Dismiss">✕</button>
+    </div>
+
+    <!-- MODAL -->
+    <div id="modal-overlay">
+        <div id="modal-card">
+            <div id="modal-header">
+                <button id="modal-close" aria-label="Close modal">✕</button>
+            </div>
+            <iframe id="modal-iframe" src="about:blank" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+        </div>
+    </div>
+
+    <header>
+        <nav class="wrap">
+            <a class="brand" href="#home">
+                <img src="https://drive.google.com/thumbnail?id=1NQSfvm1zI17He11ltHDiAr6Nq-JSsE2b&sz=w1000" alt="Lunisolar Mansion" onerror="this.style.display='none';">
+                <span>
+                    <b>Lunisolar Mansion</b>
+                    <small>Astrological Counselling, Analysis &amp; Horoscope Casting.</small>
+                </span>
+            </a>
+            <button id="menu" aria-label="Menu">☰</button>
+            <div class="nav">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#process">Process</a>
+                <a href="#philosophy">Philosophy</a>
+		<a class="pill modal-link" href="https://script.google.com/macros/s/AKfycbzMj-rDfjP0xJvVzoMJthD3FwEWvTF5z-2xeMBx-H2sAEY-w8llo7uyYh_tLlOPFrZXQA/exec">Register Yourself</a>
+		<a class="pill modal-link" href="https://script.google.com/macros/s/AKfycbzMj-rDfjP0xJvVzoMJthD3FwEWvTF5z-2xeMBx-H2sAEY-w8llo7uyYh_tLlOPFrZXQA/exec?page=horodetails">Proceed</a>
+		<a class="pill2 modal-link" href="https://script.google.com/macros/s/AKfycbzMj-rDfjP0xJvVzoMJthD3FwEWvTF5z-2xeMBx-H2sAEY-w8llo7uyYh_tLlOPFrZXQA/exec?page=client">Client Suite</a>
+                <a class="pill1 modal-link" href="https://script.google.com/macros/s/AKfycbzMj-rDfjP0xJvVzoMJthD3FwEWvTF5z-2xeMBx-H2sAEY-w8llo7uyYh_tLlOPFrZXQA/exec?page=admin">Admin</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero section-dark" id="home">
+            <div class="wrap">
+                <div class="section-card reveal">
+                    <div class="hero-grid">
+                        <div>
+                            <p class="eyebrow">CLARITY • TIMING • INFORMED CHOICE</p>
+                            <h1>
+                                <span class="white">Illuminate Your Path Through</span><br>
+                                <span class="gold">Ancient Wisdom</span>
+                            </h1>
+                            <p class="lead">Through personalized Horoscope Casting and Astrological Counselling &amp; Analysis, we explore your life's potential, capabilities, and limitations - helping you make informed decisions, recognize opportunities, and navigate challenges with greater clarity.</p>
+                            <div class="actions">
+                                 <a class="btn ghost" href="#services">Explore Services</a>                               <a class="btn primary modal-link" href="https://script.google.com/macros/s/AKfycbzMj-rDfjP0xJvVzoMJthD3FwEWvTF5z-2xeMBx-H2sAEY-w8llo7uyYh_tLlOPFrZXQA/exec">Register Yourself →</a>
+
+                            </div>
+                            <div class="trust">
+                                <span>✦ Personalized Analysis</span>
+                                <span>✦ Client Suite</span>
+                                <span>✦ Transparent Fees</span>
+                            </div>
+                        </div>
+                        <div class="visual">
+                            <div class="logo-layer">
+                                <img class="logo-dark" src="https://drive.google.com/thumbnail?id=1NQSfvm1zI17He11ltHDiAr6Nq-JSsE2b&sz=w1000" alt="Lunisolar Mansion" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:var(--gold);font-size:80px;\'>✦</span>';">
+                            </div>
+                            <div class="orbit-layer">
+                                <div class="ring"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section-light" id="about">
+            <div class="wrap">
+                <div class="section-card reveal">
+                    <div class="split">
+                        <div>
+                            <p class="eyebrow">OUR APPROACH</p>
+                            <h2>Astrology as a guide to <em style="color:var(--navy);font-style:normal;">understanding possibilities</em></h2>
+                        </div>
+                        <div class="copy">
+                            <p>Our approach is centred on careful horoscope analysis and thoughtful counselling. We examine relevant astrological factors to help you understand patterns, timing, strengths, constraints, and the choices before you.</p>
+                            <p>The aim is not to create fear or dependency, but to offer a structured perspective for reflection and informed decision-making across important areas of life.</p>
+                            <div class="tags">
+                                <span>Marriage</span>
+                                <span>Children</span>
+                                <span>Education</span>
+                                <span>Career</span>
+                                <span>etc.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="section-dark" id="services">
+            <div class="wrap">
+                <div class="section-card reveal">
+                    <div class="center">
+                        <p class="eyebrow">SERVICES</p>
+                        <h2>Choose the guidance you need</h2>
+                        <p>Each service follows a clear process, with status updates and reports managed through your Client Suite.</p>
+                    </div>
+
+                    <div class="cards">
+                        <!-- CARD 1 -->
+                        <article class="card">
+                            <div class="flip-card-inner">
+                                <div class="card-front">
+                                    <i>☉</i><small>ONLINE</small>
+                                    <h3>Astrological Analysis</h3>
+                                    <p>Personalized astrological analysis prepared from the details submitted by you and delivered through the Client Suite.</p>
+                                    <div class="tap-hint">🖱️ Hover or 👆 Tap to Flip ↻</div>
+                                </div>
+                                <div class="card-back">
+                                    <strong>₹500</strong>
+                                    <span>Payment & Report Download via Client Suite</span>
+                                    <a class="modal-link" href="https://script.google.com/macros/s/AKfycbzMj-rDfjP0xJvVzoMJthD3FwEWvTF5z-2xeMBx-H2sAEY-w8llo7uyYh_tLlOPFrZXQA/exec?page=horodetails">Submit Details →</a>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- CARD 2 -->
+                        <article class="card">
+                            <div class="flip-card-inner">
+                                <div class="card-front">
+                                    <i>☾</i><small>IN-PERSON</small>
+                                    <h3>Astrological Counselling &amp; Analysis</h3>
+                                    <p>A scheduled personal counselling session supported by a prepared astrological analysis report.</p>
+                                    <div class="tap-hint">🖱️ Hover or 👆 Tap to Flip ↻</div>
+                                </div>
+                                <div class="card-back">
+                                    <strong>₹1,000</strong>
+                                    <span>₹500 at the Scheduled Visit + ₹500 for Report Download via Client Suite</span>
+                                    <a class="modal-link" href="https://script.google.com/macros/s/AKfycbzMj-rDfjP0xJvVzoMJthD3FwEWvTF5z-2xeMBx-H2sAEY-w8llo7uyYh_tLlOPFrZXQA/exec?page=horodetails">Book a Slot →</a>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- CARD 3 -->
+                        <article class="card">
+                            <div class="flip-card-inner">
+                                <div class="card-front">
+                                    <i>✦</i><small>ASSAMESE</small>
+                                    <h3>Horoscope Casting</h3>
+                                    <p>A carefully prepared horoscope in Assamese, made available digitally in your Client Suite.</p>
+                                    <div class="tap-hint">🖱️ Hover or 👆 Tap to Flip ↻</div>
+                                </div>
+                                <div class="card-back">
+                                    <strong>₹2,500</strong>
+                                    <span>Payment & Horoscope Download via Client Suite</span>
+                                    <a class="modal-link" href="https://script.google.com/macros/s/AKfycbzMj-rDfjP0xJvVzoMJthD3FwEWvTF5z-2xeMBx-H2sAEY-w8llo7uyYh_tLlOPFrZXQA/exec?page=horodetails">Request Horoscope →</a>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- CARD 4 -->
+                        <article class="card">
+                            <div class="flip-card-inner">
+                                <div class="card-front">
+                                    <i>✧</i><small>ENGLISH</small>
+                                    <h3>Horoscope Casting</h3>
+                                    <p>A carefully prepared horoscope in English, made available digitally in your Client Suite.</p>
+                                    <div class="tap-hint">🖱️ Hover or 👆 Tap to Flip ↻</div>
+                                </div>
+                                <div class="card-back">
+                                    <strong>₹2,000</strong>
+                                    <span>Payment & Horoscope Download via Client Suite</span>
+                                    <a class="modal-link" href="https://script.google.com/macros/s/AKfycbzMj-rDfjP0xJvVzoMJthD3FwEWvTF5z-2xeMBx-H2sAEY-w8llo7uyYh_tLlOPFrZXQA/exec?page=horodetails">Request Horoscope →</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- WhatsApp Button -->
+                    <div class="whatsapp-wrapper">
+                        <a class="whatsapp-button" href="https://wa.me/919101017243" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            Chat with us on WhatsApp
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESS -->
+        <section class="section-light" id="process">
+            <div class="wrap">
+                <div class="section-card reveal">
+                    <div class="center">
+                        <p class="eyebrow">SIMPLE &amp; TRANSPARENT</p>
+                        <h2>How it works</h2>
+                    </div>
+                    <div class="steps">
+                        <div><b>01</b><h3>Register</h3><p>Create your registration and receive a unique Registration ID.</p></div>
+                        <div><b>02</b><h3>Choose a Service</h3><p>Submit the required details or book an available counselling slot.</p></div>
+                        <div><b>03</b><h3>Analysis</h3><p>Your astrological analysis or horoscope is prepared with care.</p></div>
+                        <div><b>04</b><h3>Portal Update</h3><p>You are notified on your registered WhatsApp number when ready.</p></div>
+                        <div><b>05</b><h3>Access Report</h3><p>Once your report or horoscope is ready, use the QR code available in your Client Suite to make the applicable payment and download it.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHILOSOPHY -->
+        <section class="section-dark quote" id="philosophy">
+            <div class="wrap">
+                <div class="section-card reveal">
+                    <div class="mark">“</div>
+                    <blockquote>The purpose of living is to discover the purpose of living. It is destiny which is the master of everything. None can dodge fate; none can hoodwink destiny. The native's divine plan will go on unchanged. We put on gems, we pray to God, we receive blessings—all only when the time is ripe.</blockquote>
+                    <p class="gold-text">A philosophy of timing, acceptance, and conscious action.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTAL -->
+        <section class="section-light">
+            <div class="wrap">
+                <div class="section-card reveal portal">
+                    <div>
+                        <p class="eyebrow">YOUR PRIVATE SPACE</p>
+                        <h2>Everything in one <span class="navy-highlight">Client Suite</span></h2>
+                        <p>Track your bookings, view report status, make applicable payments, and access completed reports using the Registration ID provided at the time of registration and shared with you via email.</p>
+                    </div>
+                    <a class="btn primary modal-link" href="https://script.google.com/macros/s/AKfycbzMj-rDfjP0xJvVzoMJthD3FwEWvTF5z-2xeMBx-H2sAEY-w8llo7uyYh_tLlOPFrZXQA/exec?page=client">Client Suite →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOTICE -->
+        <section class="section-dark notice">
+            <div class="wrap">
+                <div class="section-card reveal">
+                    <h3>Important Information for a <span class="gold-highlight">Reliable Astrological Analysis</span></h3>
+                    <p>Astrological analysis is interpretative in nature and has inherent limitations. Accuracy depends significantly on correct birth details and the scope of the question being examined. The analysis is intended to support reflection and informed decision-making; it should not replace qualified professional advice in medical, legal, financial, or other specialist matters.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="wrap foot">
+            <div>
+                <img class="logo-dark" src="https://drive.google.com/thumbnail?id=1NQSfvm1zI17He11ltHDiAr6Nq-JSsE2b&sz=w1000" alt="Lunisolar Mansion" onerror="this.style.display='none';">
+                <p>Illuminate Your Path Through Ancient Wisdom</p>
+            </div>
+            <div>
+                <h4>Navigate</h4>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#process">How It Works</a>
+            </div>
+            <div>
+                <h4>Quick Access</h4>
+                <a class="modal-link" href="https://script.google.com/macros/s/AKfycbzMj-rDfjP0xJvVzoMJthD3FwEWvTF5z-2xeMBx-H2sAEY-w8llo7uyYh_tLlOPFrZXQA/exec?page=registration">Registration</a>
+                <a class="modal-link" href="https://script.google.com/macros/s/AKfycbzMj-rDfjP0xJvVzoMJthD3FwEWvTF5z-2xeMBx-H2sAEY-w8llo7uyYh_tLlOPFrZXQA/exec?page=horodetails">Book / Submit Details</a>
+                <a class="modal-link" href="https://script.google.com/macros/s/AKfycbzMj-rDfjP0xJvVzoMJthD3FwEWvTF5z-2xeMBx-H2sAEY-w8llo7uyYh_tLlOPFrZXQA/exec?page=client">Client Suite</a>
+            </div>
+        </div>
+        <div class="wrap bottom">© <span id="year"></span> Lunisolar Mansion. All rights reserved. | Designed, Developed & Maintained by Dhrubajyoti Sarmah</div>
+    </footer>
+
+    <script>
+        (function() {
+            // ── mobile menu ──
+            const menuBtn = document.getElementById('menu');
+            const nav = document.querySelector('.nav');
+            menuBtn.addEventListener('click', function() {
+                nav.classList.toggle('open');
+            });
+            document.querySelectorAll('.nav a').forEach(function(a) {
+                a.addEventListener('click', function() {
+                    nav.classList.remove('open');
+                });
+            });
+
+            // ── reveal on scroll ──
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('visible');
+                        observer.unobserve(e.target);
+                    }
+                });
+            }, { threshold: .12 });
+            document.querySelectorAll('.reveal').forEach(function(el) {
+                observer.observe(el);
+            });
+
+            // ── footer year ──
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // ── modal ──
+            const overlay = document.getElementById('modal-overlay');
+            const iframe = document.getElementById('modal-iframe');
+            const closeBtn = document.getElementById('modal-close');
+            let currentSrc = '';
+
+            function openModal(src) {
+                if (src === currentSrc && overlay.classList.contains('open')) return;
+                currentSrc = src;
+                iframe.src = src;
+                overlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                overlay.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            closeBtn.addEventListener('click', closeModal);
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) closeModal();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+            });
+
+            document.querySelectorAll('.modal-link').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('http')) {
+                        openModal(href);
+                    } else {
+                        window.location.href = href;
+                    }
+                });
+            });
+
+            // ── LANDSCAPE POPUP ──
+            const popup = document.getElementById('landscape-popup');
+            const popupClose = document.getElementById('popup-close');
+            const isMobile = window.innerWidth < 768;
+            const isPortrait = window.innerHeight > window.innerWidth;
+
+            function showPopupIfNeeded() {
+                const nowWidth = window.innerWidth;
+                const nowHeight = window.innerHeight;
+                const mobile = nowWidth < 768;
+                const portrait = nowHeight > nowWidth;
+                if (mobile && portrait && !sessionStorage.getItem('landscapePopupDismissed')) {
+                    popup.style.display = 'block';
+                } else {
+                    popup.style.display = 'none';
+                }
+            }
+
+            // initial check
+            showPopupIfNeeded();
+
+            // dismiss
+            popupClose.addEventListener('click', function() {
+                popup.style.display = 'none';
+                sessionStorage.setItem('landscapePopupDismissed', 'true');
+            });
+
+            // re-check on resize / orientation change
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    if (!sessionStorage.getItem('landscapePopupDismissed')) {
+                        showPopupIfNeeded();
+                    }
+                }, 300);
+            });
+
+        })();
+    </script>
+</body>
+</html>
